@@ -31,10 +31,11 @@ jobs:
         run: npm test
 
    deploy:
+     needs: build_and_test
      runs-on: ubuntu-latest
      steps:
-      - uses: JorgeLNJunior/render-deploy@v1.5.0
-        with:
-          service_id: ${{ srv-d6a80qvgi27c73cseh40 }}
-          api_key: ${{ rnd_mupwrp0nzHSZsuVltOlfsBSyrSF5 }}
+       - uses: JorgeLNJunior/render-deploy@v1.5.0
+         with:
+           service_id: ${{ secrets.RENDER_SERVICE_ID }}
+           api_key: ${{ secrets.RENDER_API_KEY }}
    
